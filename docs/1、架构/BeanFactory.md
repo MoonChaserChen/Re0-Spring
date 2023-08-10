@@ -84,6 +84,7 @@ BeanFactory规定了：当前工厂查找不到Bean时，会从其父工厂查�
 继承至HierarchicalBeanFactory，提供了一些配置BeanFactory的方法。
 
 | 方法 | 说明 |
+| ---- | ---- |
 | void setParentBeanFactory(BeanFactory parentBeanFactory) throws IllegalStateException; | 设置父工厂，只能设置一次，不能改变 |
 | void setBeanClassLoader(@Nullable ClassLoader beanClassLoader); | 设置Bean的类加载器 |
 | ClassLoader getBeanClassLoader(); | |

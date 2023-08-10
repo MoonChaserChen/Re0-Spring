@@ -1,6 +1,4 @@
-# Spring设计思想
-## 规范的强化与集成
-## get与set的规范
+# get与set的规范
 Spring提供了XxxCapable、XxxAware的接口来定义get、set规范，例如：
 ```java
 public interface EnvironmentCapable {
