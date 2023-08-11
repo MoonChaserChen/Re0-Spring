@@ -1,5 +1,6 @@
 package ink.akira.spring.core;
 
+import ink.akira.spring.Pet;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -77,12 +78,5 @@ public class PagedListHolderTest {
         assertEquals(5, pagedListHolder.getPageList().get(4).getAge());
     }
 
-    @Data
-    @AllArgsConstructor
-    @NoArgsConstructor
-    private static class Pet {
-        private int id;
-        private String name;
-        private int age;
-    }
+
 }

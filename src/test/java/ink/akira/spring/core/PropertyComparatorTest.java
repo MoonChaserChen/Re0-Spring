@@ -1,5 +1,6 @@
 package ink.akira.spring.core;
 
+import ink.akira.spring.Pet;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -87,14 +88,5 @@ public class PropertyComparatorTest {
         BeanWrapperImpl bw = new BeanWrapperImpl();
         bw.setWrappedInstance(new Pet(1, PET_NAME_TOM, 12));
         assertEquals(PET_NAME_TOM, bw.getPropertyValue("name"));
-    }
-
-    @Data
-    @AllArgsConstructor
-    @NoArgsConstructor
-    private static class Pet {
-        private int id;
-        private String name;
-        private int age;
     }
 }
