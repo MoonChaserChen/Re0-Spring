@@ -9,6 +9,46 @@ Bean的元数据配置告诉了Spring如何来创建Bean。Spring IoC容器本�
 
 可以通过提供少量的 XML 配置来指示容器使用 Java 注解或代码作为元数据格式。
 
+### Bean的实例化方式配置
+#### 用构造函数进行实例化
+```xml
+<bean id="exampleBean" class="examples.ExampleBean"/>
+```
+#### 用静态工厂方法进行实例化
+```java
+public class ClientService {
+    private static ClientService clientService = new ClientService();
+    private ClientService() {}
+
+    public static ClientService createInstance() {
+        return clientService;
+    }
+}
+```
+```xml
+<bean id="clientService"
+    class="examples.ClientService"
+    factory-method="createInstance"/>
+```
+#### 用实例工厂方法进行实例化
+```java
+public class DefaultServiceLocator {
+
+    private static ClientService clientService = new ClientServiceImpl();
+
+    public ClientService createClientServiceInstance() {
+        return clientService;
+    }
+}
+```
+```xml
+<bean id="serviceLocator" class="examples.DefaultServiceLocator"/>
+
+<bean id="clientService"
+    factory-bean="serviceLocator"
+    factory-method="createClientServiceInstance"/>
+```
+
 ### import其它配置文件
 ```xml
 <beans>
@@ -24,6 +64,8 @@ resource有以下配置规则：
 - 根目录和当前目录都是当前文件的所在目录（所以首个/无意义，建议不用）。
 - 可以使用 `../` 引用到父级目录，但不推荐
 - 可以使用绝对路径，如：`file:C:/config/services.xml` 或 `classpath:/config/services.xml`
+
+
 
 ### 使用示例
 ```java

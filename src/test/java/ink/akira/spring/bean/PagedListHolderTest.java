@@ -1,9 +1,6 @@
-package ink.akira.spring.core;
+package ink.akira.spring.bean;
 
 import ink.akira.spring.Pet;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
 import org.junit.Test;
 import org.springframework.beans.support.MutableSortDefinition;
 import org.springframework.beans.support.PagedListHolder;

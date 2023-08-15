@@ -1,12 +1,8 @@
-package ink.akira.spring.core;
+package ink.akira.spring.bean;
 
 import ink.akira.spring.Pet;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
 import org.junit.Before;
 import org.junit.Test;
-import org.springframework.beans.BeanWrapper;
 import org.springframework.beans.BeanWrapperImpl;
 import org.springframework.beans.support.MutableSortDefinition;
 import org.springframework.beans.support.PropertyComparator;
