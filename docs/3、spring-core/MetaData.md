@@ -18,7 +18,7 @@ MethodMetadata <|-- SimpleMethodMetadata
 ```
 
 ## ClassMetadata
-类的元数据信息。通过 Java Class类也能获取到，这个接口的设计在于不用进行类加载就能获取到这些信息。包括以下部分：
+类的元数据信息（不含注解）。通过 Java Class类也能获取到，这个接口的设计在于不用进行类加载就能获取到这些信息。包括以下部分：
 
 | 方法                                  | 说明                      |
 |-------------------------------------|-------------------------|
@@ -37,7 +37,7 @@ MethodMetadata <|-- SimpleMethodMetadata
 | String[] getMemberClassNames();     | ？？？                     |
 
 ## AnnotatedTypeMetadata
-获取注解信息。包括类上的注解（AnnotationMetadata）以及方法上的注解（MethodMetadata）。其核心方法是：
+注解元数据信息。包括类上的注解（AnnotationMetadata）以及方法上的注解（MethodMetadata）。其核心方法是：
 ```java
 public interface AnnotatedTypeMetadata {
     /**
@@ -51,6 +51,7 @@ public interface AnnotatedTypeMetadata {
 ```
 
 ## AnnotationMetadata
+类的元数据信息（包括注解）。
 ```java
 public interface AnnotationMetadata extends ClassMetadata, AnnotatedTypeMetadata {
     /**
