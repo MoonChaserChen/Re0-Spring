@@ -9,6 +9,8 @@ import org.springframework.beans.MutablePropertyValues;
 import org.springframework.beans.PropertyValue;
 import org.springframework.beans.factory.support.DefaultListableBeanFactory;
 import org.springframework.beans.factory.support.GenericBeanDefinition;
+import org.springframework.beans.factory.xml.XmlBeanDefinitionReader;
+import org.springframework.core.io.ClassPathResource;
 
 public class BeanFactoryTest {
     @Test
@@ -52,6 +54,18 @@ public class BeanFactoryTest {
         // 从容器中获取
         B b = beanFactory.getBean("child", B.class);
         System.out.println(b); // BeanFactoryTest.B(id=1, name=Jerry)
+    }
+
+    @Test
+    public void test1() {
+        // 创建 DefaultListableBeanFactory，并利用 XmlBeanDefinitionReader 从 spring-bean.xml 中加载Bean
+        DefaultListableBeanFactory beanFactory = new DefaultListableBeanFactory();
+        XmlBeanDefinitionReader reader = new XmlBeanDefinitionReader(beanFactory);
+        reader.loadBeanDefinitions(new ClassPathResource("spring-bean.xml"));
+
+        // 从容器中获取
+        Pet myPet = beanFactory.getBean("pet", Pet.class);
+        System.out.println(myPet); // Pet(id=1, name=Tom, age=18)
     }
 
     @Data
