@@ -73,3 +73,7 @@ execution(modifiers-pattern?
 (*,String) 匹配一个需要两个参数的方法。第一个参数可以是任何类型，而第二个参数必须是一个 String。
 
 参考文档： https://eclipse.dev/aspectj/doc/released/progguide/semantics-pointcuts.html
+
+https://springdoc.cn/spring/core.html#aop-autoproxy  
+https://springdoc.cn/spring/core.html#aop-schema  
+<aop:config> 式的配置大量使用了 Spring 的 自动代理 机制。如果你已经通过使用 BeanNameAutoProxyCreator 或类似的东西来使用显式自动代理，这可能会导致问题（比如advice不被织入）。推荐的使用模式是只使用 <aop:config> 样式或只使用 AutoProxyCreator 样式，不要将它们混合使用。
