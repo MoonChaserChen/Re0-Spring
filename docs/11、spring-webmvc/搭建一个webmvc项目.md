@@ -153,12 +153,12 @@ public class HelloController {
 > @RestController表明直接返回Restful的API接口
 
 ### 7) 请求
-http://localhost:8080/hello?name=a
+http://localhost:8080/hello?name=Tom
 ```json
 {
     "status": 0,
     "message": "SUCCESS",
-    "data": "你好, a"
+    "data": "你好, Tom"
 }
 ```
 

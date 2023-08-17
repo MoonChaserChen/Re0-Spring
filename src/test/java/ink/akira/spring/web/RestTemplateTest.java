@@ -10,10 +10,11 @@ import org.springframework.web.client.RestTemplate;
 public class RestTemplateTest {
     @Test
     public void test() {
-        String uri = "http://localhost:8080/hello";
+        String uri = "http://localhost:8080/hello?name=Tom";
         CloseableHttpClient httpClient = HttpClients.createDefault();
         ClientHttpRequestFactory httpClientFactory = new HttpComponentsClientHttpRequestFactory(httpClient);
         RestTemplate restTemplate = new RestTemplate(httpClientFactory);
-        restTemplate.getForObject(uri, )
+        String result = restTemplate.getForObject(uri, String.class);
+        System.out.println(result);
     }
 }
