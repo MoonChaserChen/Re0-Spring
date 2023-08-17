@@ -12,19 +12,19 @@ public class PagedListHolderTest {
 
         PagedListHolder<Integer> pagedListHolder = new PagedListHolder<>(allData);
         // 默认1页10个（pageSize），当前处于第1页（page=0）
-        assertEquals(List.of(1, 2, 3, 4, 5, 6, 7, 8, 9, 10), pagedListHolder.getPageList());
+        assertEquals(MyUtils.listOf(1, 2, 3, 4, 5, 6, 7, 8, 9, 10), pagedListHolder.getPageList());
         // 查询第2页(from 0)
         pagedListHolder.setPage(1);
-        assertEquals(List.of(11, 12, 13, 14, 15, 16, 17, 18, 19, 20), pagedListHolder.getPageList());
+        assertEquals(MyUtils.listOf(11, 12, 13, 14, 15, 16, 17, 18, 19, 20), pagedListHolder.getPageList());
         // 向上越界时自动返回最后1页；向下越界时抛异常（页码数小于0）
         pagedListHolder.setPage(20);
-        assertEquals(List.of(91, 92, 93, 94, 95, 96, 97, 98, 99, 100), pagedListHolder.getPageList());
+        assertEquals(MyUtils.listOf(91, 92, 93, 94, 95, 96, 97, 98, 99, 100), pagedListHolder.getPageList());
 
         // 设置页码大小与页码（会重置为第1页page）
         pagedListHolder.setPageSize(5);
 
         // 页数据
-        assertEquals(List.of(1, 2, 3, 4, 5), pagedListHolder.getPageList());
+        assertEquals(MyUtils.listOf(1, 2, 3, 4, 5), pagedListHolder.getPageList());
         // 页码
         assertEquals(0, pagedListHolder.getPage());
         // 页大小
