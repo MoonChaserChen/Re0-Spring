@@ -4,9 +4,7 @@ RestTemplate 是 Spring 提供的用于访问 Rest 服务的客户端库。它�
 * Apache 的 HttpClient
 * OKHttp3
 
-本文使用HttpClient作为Http连接库进行 RestTemplate 的配置
-
-
+这里以使用HttpClient作为Http连接库进行 RestTemplate 的配置。
 
 ## 示例
 ### 1) 引入依赖
