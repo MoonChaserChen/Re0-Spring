@@ -2,15 +2,20 @@ package ink.akira.spring.jdbc;
 
 import com.mysql.cj.jdbc.MysqlConnectionPoolDataSource;
 import com.mysql.cj.jdbc.MysqlDataSource;
+import org.aopalliance.aop.Advice;
 import org.junit.Before;
 import org.junit.Test;
+import org.springframework.aop.Pointcut;
 import org.springframework.beans.factory.BeanFactory;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.jdbc.CannotGetJdbcConnectionException;
 import org.springframework.jdbc.datasource.DataSourceUtils;
 import org.springframework.jdbc.support.JdbcTransactionManager;
 import org.springframework.transaction.TransactionDefinition;
+import org.springframework.transaction.TransactionManager;
 import org.springframework.transaction.TransactionStatus;
+import org.springframework.transaction.annotation.AnnotationTransactionAttributeSource;
+import org.springframework.transaction.interceptor.TransactionInterceptor;
 import org.springframework.transaction.support.TransactionTemplate;
 
 import javax.sql.DataSource;
@@ -80,6 +85,19 @@ public class TransactionTest {
         BeanFactory beanFactory = new ClassPathXmlApplicationContext("spring-bean4.xml");
         PetService petService = beanFactory.getBean("petService", PetService.class);
         petService.stubInsert();
+    }
+
+    @Test(expected = RuntimeException.class)
+    public void test4() {
+        BeanFactory beanFactory = new ClassPathXmlApplicationContext("spring-bean5.xml");
+        PetService petService = beanFactory.getBean("petService", PetService.class);
+        petService.doInsert();
+    }
+
+    @Test
+    public void test5() {
+        BeanFactory beanFactory = new ClassPathXmlApplicationContext("spring-bean5.xml");
+        PetService petService = beanFactory.getBean("petService", PetService.class);
     }
 
     public void doInsert() {
