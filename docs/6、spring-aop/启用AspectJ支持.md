@@ -76,4 +76,4 @@ execution(modifiers-pattern?
 
 https://springdoc.cn/spring/core.html#aop-autoproxy  
 https://springdoc.cn/spring/core.html#aop-schema  
-<aop:config> 式的配置大量使用了 Spring 的 自动代理 机制。如果你已经通过使用 BeanNameAutoProxyCreator 或类似的东西来使用显式自动代理，这可能会导致问题（比如advice不被织入）。推荐的使用模式是只使用 <aop:config> 样式或只使用 AutoProxyCreator 样式，不要将它们混合使用。
+`<aop:config>` 式的配置大量使用了 Spring 的 自动代理 机制。如果你已经通过使用 BeanNameAutoProxyCreator 或类似的东西来使用显式自动代理，这可能会导致问题（比如advice不被织入）。推荐的使用模式是只使用 `<aop:config>` 样式或只使用 AutoProxyCreator 样式，不要将它们混合使用。
