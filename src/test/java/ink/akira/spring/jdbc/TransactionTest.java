@@ -1,16 +1,16 @@
 package ink.akira.spring.jdbc;
 
 import com.mysql.cj.jdbc.MysqlConnectionPoolDataSource;
+import com.mysql.cj.jdbc.MysqlDataSource;
 import org.junit.Before;
 import org.junit.Test;
+import org.springframework.beans.factory.BeanFactory;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.jdbc.CannotGetJdbcConnectionException;
 import org.springframework.jdbc.datasource.DataSourceUtils;
 import org.springframework.jdbc.support.JdbcTransactionManager;
 import org.springframework.transaction.TransactionDefinition;
-import org.springframework.transaction.TransactionException;
 import org.springframework.transaction.TransactionStatus;
-import org.springframework.transaction.support.TransactionCallback;
-import org.springframework.transaction.support.TransactionCallbackWithoutResult;
 import org.springframework.transaction.support.TransactionTemplate;
 
 import javax.sql.DataSource;
@@ -25,7 +25,7 @@ public class TransactionTest {
 
     @Before
     public void before() {
-        MysqlConnectionPoolDataSource mysqlDataSource = new MysqlConnectionPoolDataSource();
+        MysqlDataSource mysqlDataSource = new MysqlDataSource();
         mysqlDataSource.setURL("jdbc:mysql://localhost:3306/akira?useUnicode=true&characterEncoding=utf8&useSSL=false");
         mysqlDataSource.setUser("root");
         mysqlDataSource.setPassword("root@Mysql8.0");
@@ -73,6 +73,13 @@ public class TransactionTest {
             doInsert();
             return null;
         });
+    }
+
+    @Test(expected = RuntimeException.class)
+    public void test3() {
+        BeanFactory beanFactory = new ClassPathXmlApplicationContext("spring-bean4.xml");
+        PetService petService = beanFactory.getBean("petService", PetService.class);
+        petService.stubInsert();
     }
 
     public void doInsert() {
