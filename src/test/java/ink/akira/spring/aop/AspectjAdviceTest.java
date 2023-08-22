@@ -28,6 +28,7 @@ public class AspectjAdviceTest {
         // 获取代理对象并执行
         DemoService proxyedDemoService = (DemoService) factory.getProxy();
         proxyedDemoService.hello();
+        proxyedDemoService.hello();
     }
 
     @Test
