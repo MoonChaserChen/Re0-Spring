@@ -1,5 +1,5 @@
 # Re0-Spring
-基于 `2.7.5` 版本的SpringBoot 或 `5.3.23`版本的Spring从零开始学习。
+基于 `2.7.6` 版本的SpringBoot 或 `5.3.24`版本的Spring从零开始学习。
 
 ## 参考
 - [官方文档](https://docs.spring.io/spring-framework/reference/overview.html)
